@@ -49,6 +49,6 @@ void readSensor(){
 }
 
 void sendDataSerial(float temp){
-  Serial.print("Data,");
+  Serial.print("DATA,");
   Serial.println(temp);
 }
