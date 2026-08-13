@@ -1,7 +1,7 @@
 # Heat System (Temperature Logger)
 
 ## Overview
-This repository contains firmware for a minor ESP32-based environmental monitoring node. The system actively reads temperature data utilizing a DS18B20 sensor and transmits it over a physical USB serial connection for PC-side data logging. It does not include hardware control logic.
+This repository contains firmware for a ESP32-based environmental monitoring node. The system actively reads temperature data utilizing a DS18B20 sensor and transmits it over a physical USB serial connection for PC-side data logging. It does not include hardware control logic.
 
 ## Hardware Specifications and Pin Mapping
 
