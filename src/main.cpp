@@ -77,11 +77,12 @@ void updateDisplay(){
   tft.print("Temp: ");
   if (currentTemp == DEVICE_DISCONNECTED_C) {
     tft.println("Error       "); 
+    tft.println();
+    tft.println("                  "); 
   } else {
     tft.print(currentTemp);
     tft.println(" C       "); 
+    tft.println();
+    tft.println("Logging over USB  "); 
   }
-  
-  tft.println();
-  tft.println("Logging over USB");
 }
