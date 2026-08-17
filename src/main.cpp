@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
-#include <TFT_eSPI.h>
+#include <TFT_eSPI.h> 
 
 // Data wire is connected to GPIO 16 (RX2)
 #define ONE_WIRE_BUS 16
