@@ -178,7 +178,6 @@ void handleKeypad() {
       break;
   }
 }
-
 void updateDisplay() {
   tft.setCursor(0, 0);
   
@@ -186,15 +185,14 @@ void updateDisplay() {
   
   tft.print("Temp: ");
   if (currentTemp == DEVICE_DISCONNECTED_C) {
-    tft.print("  Error      |     ");
-
+    tft.print("Error        |   "); 
   } else {
     tft.print(currentTemp);
-    tft.print(" C      |     ");
+    tft.print(" C    |   "); 
   }
 
   tft.print(targetTemp); 
-  tft.println(" C       "); // Padding to overwrite old digits
+  tft.println(" C   "); // Reduced padding to prevent screen wrap
   
   tft.println("\n--- Input Mode ---");
   tft.println("A:Set Temp"); 
@@ -202,11 +200,11 @@ void updateDisplay() {
   tft.println("#:Confirm"); 
   
   if (currentMode == SET_TEMP) {
-    tft.println("\nEntering Target Temp:        ");
+    tft.println("\nEntering Target Temp:"); 
     tft.print(entryBuffer);
-    tft.println("               "); // Padding for buffer
+    tft.println("      "); // Reduced padding for entry buffer
   } else {
-    tft.println("\n                             "); // Overwrite prompt text
-    tft.println("                             "); // Overwrite buffer text
+    tft.println("\n                     "); // 21 spaces exactly overwrites the prompt
+    tft.println("      "); // 6 spaces exactly overwrites the buffer
   }
 }
