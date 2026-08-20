@@ -7,7 +7,7 @@ import sys
 # Update this to match the COM port assigned to the ESP32
 SERIAL_PORT = 'COM12' 
 BAUD_RATE = 115200
-CSV_FILENAME = 'environmental_telemetry_heat.csv'
+CSV_FILENAME = 'log_heat.csv'
 
 # --- Initialization ---
 try:
