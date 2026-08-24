@@ -171,7 +171,7 @@ void handleKeypad() {
       break;
 
     default:
-      if (key >= '0' && key <= '9' && entryBuffer.length() < 6) { 
+      if (key >= '0' && key <= '9' && entryBuffer.length() < 4) { 
         entryBuffer += key;
         updateDisplay();
       }
@@ -182,17 +182,17 @@ void handleKeypad() {
 void updateDisplay() {
   tft.setCursor(0, 0);
   
-  tft.println("--- Status --- | --- Target ---");
+  tft.println("-- Status -- | -- Target --");
   
   tft.print("Temp: ");
   if (currentTemp == DEVICE_DISCONNECTED_C) {
-    tft.print("Error    | "); 
+    tft.print("Error  |    "); 
   } else {
-    tft.print(currentTemp);
-    tft.print(" C | "); 
+    tft.print(currentTemp,1);
+    tft.print(" C |    "); 
   }
 
-  tft.print(targetTemp); 
+  tft.print(targetTemp,1); 
   tft.println(" C      "); // Padding to overwrite old digits
   
   tft.println("\n--- Input Mode ---");
