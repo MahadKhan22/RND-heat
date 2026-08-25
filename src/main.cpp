@@ -188,6 +188,7 @@ void updateDisplay() {
   tft.print(targetTemp, 1); 
   tft.println(" C      "); 
   
+  tft.println();
   tft.print("Relay: ");
   if (digitalRead(HEATER_PIN)) {
     tft.println("ON                ");
@@ -196,8 +197,8 @@ void updateDisplay() {
   }
   
   tft.println("\n--- Input Mode ---");
-  tft.println("A:Set Temp  *:Delete"); 
-  tft.println("#:Confirm           "); 
+  tft.println("A:Set Temperature   "); 
+  tft.println("*:Delete   #:Confirm"); 
   
   if (currentMode == SET_TEMP) {
     tft.println("\nEntering Target Temp:"); 
