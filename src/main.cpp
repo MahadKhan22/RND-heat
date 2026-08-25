@@ -40,7 +40,7 @@ const unsigned long READ_INTERVAL = 2000;
 
 // --- Error Tolerance Variables ---
 unsigned long errorStartTime = 0;
-const unsigned long ERROR_TIMEOUT = 10000; // 10 seconds in milliseconds
+const unsigned long ERROR_TIMEOUT = 1000; // wait 1 second to turn off if sensor error
 bool errorActive = false;
 
 // --- Function Prototypes ---
@@ -142,13 +142,6 @@ void handleKeypad() {
       updateDisplay();
       break;
 
-    case 'C': 
-      if (entryBuffer.indexOf('.') == -1) {
-        entryBuffer += '.';
-        updateDisplay();
-      }
-      break;
-
     case '*': 
       if (entryBuffer.length() > 0) {
         entryBuffer.remove(entryBuffer.length() - 1);
@@ -160,7 +153,7 @@ void handleKeypad() {
 
     case '#': 
       if (entryBuffer.length() > 0) { 
-        float newSetpoint = entryBuffer.toFloat();
+        float newSetpoint = entryBuffer.toInt();
         if (currentMode == SET_TEMP) {
           targetTemp = newSetpoint;
         }
@@ -188,23 +181,30 @@ void updateDisplay() {
   if (currentTemp == DEVICE_DISCONNECTED_C) {
     tft.print("Error  |    "); 
   } else {
-    tft.print(currentTemp,1);
+    tft.print(currentTemp, 1);
     tft.print(" C |    "); 
   }
 
-  tft.print(targetTemp,1); 
-  tft.println(" C      "); // Padding to overwrite old digits
+  tft.print(targetTemp, 1); 
+  tft.println(" C      "); 
+  
+  tft.print("Relay: ");
+  if (digitalRead(HEATER_PIN)) {
+    tft.println("ON                ");
+  } else {
+    tft.println("OFF               ");
+  }
   
   tft.println("\n--- Input Mode ---");
   tft.println("A:Set Temp  *:Delete"); 
-  tft.println("C:Decimal   #:Confirm"); 
+  tft.println("#:Confirm           "); 
   
   if (currentMode == SET_TEMP) {
     tft.println("\nEntering Target Temp:"); 
     tft.print(entryBuffer);
-    tft.println("          "); // Padding for buffer
+    tft.println("          "); 
   } else {
-    tft.println("\n                     "); // 21 spaces overwrites the prompt
-    tft.println("          "); // 10 spaces overwrites the buffer
+    tft.println("\n                     "); 
+    tft.println("          "); 
   }
 }
