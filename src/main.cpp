@@ -69,8 +69,8 @@ void setup() {
   // Initialize and configure TFT display
   tft.init();
   tft.setRotation(1);
-  tft.fillScreen(TFT_BLACK);
-  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.fillScreen(TFT_WHITE);
+  tft.setTextColor(TFT_BLACK, TFT_WHITE);
   tft.setTextSize(2);
   
   updateDisplay();
