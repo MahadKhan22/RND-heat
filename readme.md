@@ -11,6 +11,8 @@ This repository contains firmware and software for an ESP32-based environmental 
 ### Sensor
 *   **Model:** DS18B20
 *   **Data Pin:** GPIO 15
+*   **Plug in:** When plugging in the sensor wires, viewed from the back of the board, keep the red wire (+) on the right, so the black wire (-) is on the right and the data line is between them.
+
 
 ### Relay
 *   **Heater Control:** GPIO 17 (Active HIGH)
